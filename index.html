@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoxelForge 3D - Loja de Impressão 3D</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- cabeçalho: logo na esquerda e menu na direita (float) -->
+    <header id="topo">
+        <div class="container clearfix">
+            <div class="logo-box">
+                <img src="assets/logo.png" alt="Logo da VoxelForge 3D" class="logo-img">
+            </div>
+
+            <nav class="menu-nav">
+                <ul>
+                    <li><a href="#banner">Início</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#vantagens">Vantagens</a></li>
+                    <li><a href="#carrinho">Carrinho (<span id="contador-menu">0</span>)</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <!-- link externo abrindo em outra aba -->
+                    <li><a href="https://www.thingiverse.com" target="_blank" rel="noopener noreferrer">Thingiverse ↗</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- banner principal -->
+    <section id="banner">
+        <div class="container">
+            <h1>VoxelForge 3D</h1>
+            <p>Peças impressas em 3D: action figures em resina, peças técnicas em ABS, suportes pro seu setup e muito mais.</p>
+            <a href="#produtos" class="btn-destaque">Ver produtos</a>
+        </div>
+    </section>
+
+    <!-- vantagens (lista ordenada) -->
+    <section id="vantagens" class="secao-clara">
+        <div class="container">
+            <h2 class="titulo-secao">Por que comprar com a gente?</h2>
+            <p class="subtitulo-secao">Como funciona o nosso processo:</p>
+
+            <ol class="lista-vantagens">
+                <li><strong>Material de qualidade:</strong> usamos filamento PLA/PETG e resina 8K.</li>
+                <li><strong>Impressoras calibradas:</strong> camadas de 0.1mm, quase não dá pra ver.</li>
+                <li><strong>Acabamento manual:</strong> tiramos os suportes e conferimos cada peça.</li>
+                <li><strong>Embalagem segura:</strong> enviamos pra todo o Brasil com frete fixo.</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- produtos (os cards são criados pelo script.js) -->
+    <section id="produtos">
+        <div class="container">
+            <h2 class="titulo-secao">Produtos</h2>
+            <p class="subtitulo-secao">Pesquise pelo nome ou filtre pela categoria:</p>
+
+            <div class="barra-filtros">
+                <input type="text" id="input-busca" placeholder="Buscar produto (ex: suporte, dragão...)">
+                <select id="select-categoria">
+                    <option value="Todas">Todas as categorias</option>
+                    <option value="Geek &amp; Setup">Geek &amp; Setup</option>
+                    <option value="Decoração">Decoração</option>
+                    <option value="Peças Técnicas">Peças Técnicas</option>
+                    <option value="Colecionáveis">Colecionáveis</option>
+                </select>
+            </div>
+
+            <div id="vitrine-produtos" class="vitrine-box"></div>
+        </div>
+    </section>
+
+    <!-- carrinho: tabela + cupom + resumo -->
+    <section id="carrinho" class="secao-clara">
+        <div class="container">
+            <h2 class="titulo-secao">Carrinho</h2>
+            <p class="subtitulo-secao">Confira os itens e aplique um cupom se tiver.</p>
+
+            <div class="tabela-responsiva">
+                <table id="tabela-carrinho">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Categoria</th>
+                            <th>Preço</th>
+                            <th>Qtd</th>
+                            <th>Subtotal</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <!-- linhas preenchidas pelo JS -->
+                    <tbody id="corpo-tabela-carrinho"></tbody>
+                </table>
+            </div>
+
+            <div class="painel-carrinho clearfix">
+
+                <div class="caixa-cupom">
+                    <h3>Cupom de desconto</h3>
+                    <p class="dica-cupom">
+                        Cupons pra testar:<br>
+                        • <strong>DESCONTO10</strong> - 10% de desconto<br>
+                        • <strong>MENOS20</strong> - R$ 20 off em compras a partir de R$ 100<br>
+                        • <strong>FRETEGRATIS</strong> - frete grátis
+                    </p>
+                    <div class="grupo-input-cupom">
+                        <input type="text" id="input-cupom" placeholder="Digite o cupom">
+                        <button type="button" id="btn-aplicar-cupom" class="btn-secundario">Aplicar</button>
+                    </div>
+                    <p id="mensagem-cupom" class="msg-feedback"></p>
+                </div>
+
+                <div class="caixa-resumo">
+                    <h3>Resumo do pedido</h3>
+                    <div class="linha-resumo">
+                        <span>Subtotal:</span>
+                        <strong id="valor-subtotal">R$ 0,00</strong>
+                    </div>
+                    <div class="linha-resumo">
+                        <span>Frete:</span>
+                        <strong id="valor-frete">R$ 0,00</strong>
+                    </div>
+                    <div class="linha-resumo texto-desconto">
+                        <span>Desconto (<span id="nome-cupom-ativo">Nenhum</span>):</span>
+                        <strong id="valor-desconto">- R$ 0,00</strong>
+                    </div>
+                    <hr>
+                    <div class="linha-resumo linha-total">
+                        <span>Total:</span>
+                        <strong id="valor-total">R$ 0,00</strong>
+                    </div>
+
+                    <button type="button" id="btn-finalizar-compra" class="btn-comprar">Finalizar compra</button>
+                    <p id="mensagem-compra" class="msg-feedback"></p>
+                </div>
+
+            </div>
+
+            <!-- aparece depois que finaliza a compra -->
+            <div id="recibo-pedido" class="recibo-oculto"></div>
+        </div>
+    </section>
+
+    <!-- formulário de contato -->
+    <section id="contato">
+        <div class="container">
+            <h2 class="titulo-secao">Contato</h2>
+            <p class="subtitulo-secao">Quer imprimir uma peça sua ou tem alguma dúvida? Manda uma mensagem.</p>
+
+            <form id="form-contato" class="formulario-box">
+                <div class="campo-form">
+                    <label for="nome-contato">Nome:</label>
+                    <input type="text" id="nome-contato" name="nome" placeholder="Seu nome" required>
+                </div>
+
+                <div class="campo-form">
+                    <label for="email-contato">E-mail:</label>
+                    <input type="email" id="email-contato" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+
+                <div class="campo-form">
+                    <label for="mensagem-contato">Mensagem:</label>
+                    <textarea id="mensagem-contato" name="mensagem" rows="4" placeholder="Escreva sua mensagem..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-destaque">Enviar</button>
+                <p id="feedback-contato" class="msg-feedback"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- botão do carrinho que fica fixo no canto da tela -->
+    <a href="#carrinho" id="atalho-carrinho-flutuante" title="Ir para o carrinho">
+        🛒 <span id="badge-flutuante">0</span>
+    </a>
+
+    <footer id="rodape">
+        <div class="container">
+            <h3>VoxelForge 3D</h3>
+            <p>Trabalho de Desenvolvimento Web - Profª Janainny Sena</p>
+            <p>Análise e Desenvolvimento de Sistemas - 2º semestre</p>
+
+            <div class="box-integrantes">
+                <h4>Integrantes</h4>
+                <ul>
+                    <li><strong>Leonardo Cassiano Bruchez Pereira</strong> - 202602186039</li>
+                    <li><strong>João Vitor Gonçalves Da Silva</strong> - 202602185911</li>
+                    <li><strong>Daniel Rochadel</strong> - 202603259773</li>
+                </ul>
+            </div>
+
+            <p class="copyright">&copy; 2026 VoxelForge 3D</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
