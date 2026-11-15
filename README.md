@@ -1,6 +1,6 @@
 # VoxelForge 3D
 
-Trabalho de Desenvolvimento Web (Profª Janainny Sena) - ADS, 2º semestre.
+Trabalho de Desenvolvimento Web - ADS, 2º semestre.
 
 Fizemos uma loja virtual de peças impressas em 3D, com vitrine de produtos, carrinho, cupom de desconto e botão de finalizar compra. Usamos só HTML, CSS e JavaScript, sem framework.
 
