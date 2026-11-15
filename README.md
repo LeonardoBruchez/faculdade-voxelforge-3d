@@ -6,9 +6,9 @@ Fizemos uma loja virtual de peças impressas em 3D, com vitrine de produtos, car
 
 ## Integrantes
 
-- Leonardo Cassiano Bruchez Pereira - 202602186039
-- João Vitor Gonçalves Da Silva - 202602185911
-- Daniel Rochadel - 202603259773
+- Leonardo Cassiano Bruchez Pereira
+- João Vitor Gonçalves Da Silva
+- Daniel Rochadel
 
 ## Como rodar
 
