@@ -4,7 +4,7 @@ Trabalho de Desenvolvimento Web - ADS, 2º semestre.
 
 Fizemos uma loja virtual de peças impressas em 3D, com vitrine de produtos, carrinho, cupom de desconto e botão de finalizar compra. Usamos só HTML, CSS e JavaScript, sem framework.
 
-## Integrantes
+## Integrantes..
 
 - Leonardo Cassiano Bruchez Pereira
 - João Vitor Gonçalves Da Silva
